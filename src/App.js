@@ -1,10 +1,17 @@
 import './App.css';
-import Login from './pages/Login';
+// import Index from './client/pages/Index';
+import ShoppingCart from './client/pages/ShoppingCart';
+// import Login from './pages/Login';
+// import ClientHome from './client/pages/ClientHome';
+
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      {/* <Login /> */}
+      {/* <ClientHome/> */}
+      {/* <Index/> */}
+      <ShoppingCart/>
     </div>
   );
 }
