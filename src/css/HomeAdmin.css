@@ -1,0 +1,53 @@
+/* HomeAdmin.css */
+.sider {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    scrollbar-width: thin;
+    scrollbar-color: unset;
+
+}
+
+.manager {
+    color: white;
+    text-align: center;
+    cursor: pointer
+}
+
+.menu {
+    width: 300;
+    text-align: justify;
+}
+
+.header {
+    padding: 0;
+    background-color: var(--colorBgContainer);
+}
+
+.header-content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+}
+
+.content {
+    margin: 24px 16px 0;
+    overflow: initial;
+    height: auto;
+}
+
+.content-inner {
+    padding: 24px;
+    text-align: center;
+    background-color: var(--colorBgContainer);
+    border-radius: var(--borderRadiusLG);
+}
+
+.footer {
+    text-align: center;
+}
