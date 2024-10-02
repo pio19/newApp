@@ -1,0 +1,92 @@
+/* Đặt chiều rộng hợp lý cho Sider */
+.sider-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung quá dài */
+  }
+  
+  .category-container {
+    margin-bottom: 20px;
+  }
+  
+  .category-container .ant-typography {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  /* Cân chỉnh Header */
+  .header-container {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: #001529; /* Màu nền cho Header */
+  }
+  
+  .header-logo {
+    margin-right: 20px;
+  }
+  
+  .header-menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header-menu .ant-menu {
+    flex: 1;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-actions .ant-btn {
+    margin-left: 10px;
+  }
+  .button-no-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    padding: 0;
+    background: transparent !important; /* Xóa nền của nút */
+    border: none !important;           /* Xóa viền của nút */
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .icon-size {
+    font-size: 32px !important;       /* Kích thước của biểu tượng */
+    line-height: 1 !important;        /* Đặt line-height cho icon */
+  }
+  
+  
+  /* Ẩn nền của các mục menu khi được chọn */
+.ant-menu-item-selected,
+.ant-menu-item-active {
+  background: none !important; /* Ẩn nền khi mục được chọn hoặc đang hoạt động */
+}
+
+/* Ẩn nền khi di chuột qua mục menu */
+.ant-menu-item:hover {
+  background: none !important; /* Ẩn nền khi di chuột qua mục menu */
+  cursor: pointer; /* Đổi biểu tượng chuột thành pointer khi di chuột qua */
+}
+
+/* Đổi màu chữ khi di chuột qua mục menu hoặc chọn */
+.ant-menu-item:hover,
+.ant-menu-item-selected {
+  color: #ffffff; /* Hoặc màu chữ mong muốn */
+}
