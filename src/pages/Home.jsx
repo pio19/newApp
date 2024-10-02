@@ -32,6 +32,13 @@ const Home = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  // const { getList, getOne } = dataProvider("products");
+  // useEffect(() => {
+  //   getList().then((result) => {
+  //     console.log(result);
+  //   });
+  // }, []);
   return (
     <Layout>
       <Header
