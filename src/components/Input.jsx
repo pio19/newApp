@@ -28,6 +28,7 @@ function Input({label, type, name, value, onChange}) {
         />
       </div>
     </div>
+    
   );
 }
 
