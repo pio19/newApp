@@ -1,79 +1,86 @@
 import React, { useEffect, useState } from "react";
-import { Button, Flex, Table } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Button, Flex, Popconfirm, Table, message } from "antd";
+import { PlusOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import CrateNew from "../components/createNew";
 import axios from "axios";
 import { useList } from "../hooks/useList";
-const columns = [
-  {
-    title: "ID",
-    dataIndex: "id"
-  },
-  {
-    title: "Image",
-    dataIndex: "image",
-    render: (image) => <img src={image} alt="avatar" style={{ width: 50, height: 50 }} />
-  },
-  {
-    title: "Title",
-    dataIndex: "title",
-  },
-  {
-    title: "Price",
-    dataIndex: "price",
-  },
-  {
-    title: "Description",
-    dataIndex: "description",
-  },
-  {
-    title: "Category",
-    dataIndex: ["category", "name"]
-  },
-];
+import useDelete from "../hooks/useDelete";
+import { deleteItem } from "../base/api";
 
 const Products = () => {
-  const [loading, setLoading] = useState(false);
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Image",
+      dataIndex: "image",
+      render: (image) => (
+        <img src={image} alt="avatar" style={{ width: 50, height: 50 }} />
+      ),
+      key: "image",
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "Category",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      render: (_, record) => (
+        <Popconfirm
+          title="Bạn có muốn xóa sản phẩm này?"
+          onConfirm={async () => {
+            await deleteRowsById([record.id]);
+            message.success("Xóa sản phẩm thành công!");
+          }}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button icon={<DeleteOutlined />} loading={loading} />
+        </Popconfirm>
+      ),
+      key: "action",
+    },
+  ];
+
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const {data, onPagination} = useList({resource: 'products'});
+  const { data, onPagination } = useList({ resource: "products" });
+  const { deleteRowsById, loading } = useDelete(deleteItem);
   const dataSource = data || [];
 
-console.log(data);
-
-
-  // const fetchData = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await axios.get(
-  //       "https://api.escuelajs.co/api/v1/products"
-  //     );
-  //     setDataSource(response.data);
-  //   } catch (error) {
-  //     console.error("Lỗi khi gọi API: ", error);
-  //   }
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-  // const [loading, setLoading] = useState(false);
-  // const start = () => {
-  //   setLoading(true);
-  //   // ajax request after empty completing
-  //   setTimeout(() => {
-  //     setSelectedRowKeys([]);
-  //     setLoading(false);
-  //   }, 1000);
-  // };
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const rowSelection = {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+
+  const handleDeleteSelectedRows = () => {
+    deleteRowsById(selectedRowKeys);
+    setSelectedRowKeys([]);
+  };
+
+  console.log(selectedRowKeys);
   const hasSelected = selectedRowKeys.length > 0;
 
   const [showAnotherComponent, setShowAnotherComponent] = useState(false);

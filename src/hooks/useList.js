@@ -14,9 +14,9 @@ export const useList = ({ resource, options }) => {
     //     })
     // }, [pageSize, page])
     const { data = [], refetch, ...query } = useQuery({
-        queryKey: 'products',
-        page, pageSize, 
-        queryFn: () => getList(pageSize, page)
+        queryKey: ['products', page, pageSize],
+        queryFn: () => getList(pageSize, page),
+
     });
 
     const onPagination = (page, pageSize) => {
@@ -24,6 +24,10 @@ export const useList = ({ resource, options }) => {
         setPage((page > 0 ? page - 1 : page) * pageSize);
     }
 
+    // const reload = () => {
+    //     return refetch();
+    // }
 
-    return { data, onPagination};
+
+    return { data, onPagination };
 }

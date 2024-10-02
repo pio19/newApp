@@ -9,6 +9,10 @@ import HomeAdmin from './admin/HomeAdmin';
 import Products from './admin/Products';
 import Facets from './admin/Facets';
 import CreateNew from './components/createNew';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+
+const queryClient = new QueryClient();
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +25,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <HomeAdmin />,    
+    element: <HomeAdmin />,
   },
   {
     path: "/catalog/products",
@@ -40,13 +44,16 @@ export const router = createBrowserRouter([
   {
     path: "/catalog/facets",
     element: <Facets />,
-  },  
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

@@ -7,7 +7,7 @@ export const instanceAxios = axios.create({
 
 export const dataProvider = (resource) => {
     const getList = async (limit, offset) => {
-// resource?limit=10&offset=0
+        // resource?limit=10&offset=0
         const res = await instanceAxios.get(`${resource}?limit=${limit}&offset=${offset}`);
 
         return res.data;
@@ -16,7 +16,9 @@ export const dataProvider = (resource) => {
         return instanceAxios.get(`${resource}/${id}`, data)
     }
 
-
-
     return { getList, getOne }
 }
+
+export const deleteItem = async (id) => {
+    return await instanceAxios.delete(`/products/${id}`); 
+};
