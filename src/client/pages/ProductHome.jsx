@@ -71,7 +71,7 @@ const ClientHome = ({ selectedCategory, checkedValues, setCheckedValues }) => {
           <Breadcrumb.Item>{selectedCategory}</Breadcrumb.Item>
         </Breadcrumb>
         <Content
-          style={{
+          style={{ 
             padding: 24,
             margin: 0,
             minHeight: 280,
