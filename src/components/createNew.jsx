@@ -88,12 +88,6 @@ const CrateNew = () => {
     });
   };
 
-  // const updateProduct = (index, updatedProduct) => {
-  //   const updatedProducts = [...products];
-  //   updatedProducts[index] = { ...updatedProducts[index], ...updatedProduct };
-  //   setProducts(updatedProducts);
-  //   console.log(updatedProducts)
-  // };
 
   const [open, setOpen] = useState(false);
   const showAddFacets = () => {

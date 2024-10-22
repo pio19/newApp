@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PostImagea = ({ src, alt, style }) => {
+const PostImage = ({ src, alt, style }) => {
   return (
     <img src={src} alt={alt} style={style} />
   );
 };
 
-export default PostImagea;
+export default PostImage;

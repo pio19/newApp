@@ -2,6 +2,7 @@ import React, { useEffect ,useState } from "react";
 import { Button, Flex, Table } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { useList } from "../../hooks/useList";
 const columns = [
   {
     title: "ID",
@@ -22,34 +23,35 @@ const columns = [
 
 const Collection = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [dataSource, setDataSource] = useState([]);
+  const { data } = useList({ resource: "categories" });
+  // const { deleteRowsById, loading } = useDelete(deleteItem);
+  const dataSource = data || [];
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        "https://api.escuelajs.co/api/v1/categories"
-      );
-      setDataSource(response.data);
-    } catch (error) {
-      console.error("Lỗi khi gọi API: ", error);
-    }
-    setLoading(false);
-  };
+  // const fetchData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get(
+  //       "https://api.escuelajs.co/api/v1/categories"
+  //     );
+  //     setDataSource(response.data);
+  //   } catch (error) {
+  //     console.error("Lỗi khi gọi API: ", error);
+  //   }
+  //   setLoading(false);
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
   
-  const start = () => {
-    setLoading(true);
-    // ajax request after empty completing
-    setTimeout(() => {
-      setSelectedRowKeys([]);
-      setLoading(false);
-    }, 1000);
-  };
+  // const start = () => {
+  //   setLoading(true);
+  //   // ajax request after empty completing
+  //   setTimeout(() => {
+  //     setSelectedRowKeys([]);
+  //     setLoading(false);
+  //   }, 1000);
+  // };
 
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
@@ -75,7 +77,7 @@ const Collection = () => {
         rowSelection={rowSelection}
         columns={columns}
         dataSource={dataSource}
-        loading={loading}
+        // loading={loading}
       />
     </Flex>
   );

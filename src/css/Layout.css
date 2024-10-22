@@ -1,0 +1,38 @@
+.siderStyle {
+    width: 200px;
+    background: #001529;
+}
+
+.manager {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.header {
+    padding: 0;
+    background: white;
+}
+
+.header-content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+}
+
+.content {
+    margin: 24px 16px 0;
+    overflow: initial;
+    height: auto;
+}
+
+
+.footer {
+    text-align: center;
+}
+
+.layout {
+    margin-inline-start: 200;
+}

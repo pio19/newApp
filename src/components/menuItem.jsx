@@ -1,46 +1,12 @@
-// import {
-//   ProductOutlined,
-//   TagOutlined,
-//   FolderOpenOutlined,
-//   FileImageOutlined,
-//   TeamOutlined,
-//   UserOutlined,
-//   ShoppingCartOutlined,
-//   MoneyCollectOutlined,
-// } from "@ant-design/icons";
-// import Products from "../admin/Products";
-// import Facets from "../admin/Facets";
-// import Collection from "../admin/Collection";
-
-// function getIconByIndex(index) {
-//   const icons = [
-//     ProductOutlined,
-//     TagOutlined,
-//     FolderOpenOutlined,
-//     FileImageOutlined,
-//     ShoppingCartOutlined,
-//     UserOutlined,
-//     TeamOutlined,
-//     MoneyCollectOutlined,
-//   ];
-//   return icons[index];
-// }
-
-// const componentsMap = {
-//   "products": Products,
-//   "facets": Facets,
-//   "collection": Collection,
-// };
-
 const createGroup = (key, label, children) => ({
   key: key,
   label: label,
   type: "group",
-  children: children.map((child, index) => ({
-    // key: `${index + 1}`,
+  children: children.map((child, index) => ({    
+    // parentKey: key,
+    // key:  "/" + key + '/' + child.toLowerCase(),
     key: child.toLowerCase(),
     label: child,
-    parentKey: key,
   })),
 });
 
@@ -48,10 +14,10 @@ const createSub = (key, label, children) => ({
   key,
   label,
   children: children.map((child, index) => ({
-    // key: `${index + 1}`,
+    // key: "/" + key + '/' + child.toLowerCase(),
     key: child.toLowerCase(),
     label: child,
-    parentKey: key,
+    // parentKey: key,
   })),
 });
 
@@ -83,8 +49,6 @@ const items = [
     "Job queue",
     "System status",
   ]),
-
-
 ];
 
 

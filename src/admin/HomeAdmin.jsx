@@ -2,18 +2,35 @@ import React, { useState } from "react";
 import { BellOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, Select, theme } from "antd";
 
-import Products from "./Products";
 import items from "../components/menuItem";
-import options from "../components/Select";
 import { router } from "..";
-import Facets from "./Facets";
-import Collection from "./Collection";
+import Facets from "./catalog/Facets";
+import Collection from "./catalog/Categories";
 
 import "../css/HomeAdmin.css";
-import { useOne } from "../hooks/useOne";
-import { useList } from "../hooks/useList";
+import ProductList from "./pages/products/List";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
+const options = [
+  {
+    value: "Profile",
+    label: "Profile",
+  },
+  {
+    value: "Language",
+    label: "Language",
+  },
+  {
+    value: "Theme",
+    label: "Theme",
+  },
+  {
+    value: "Logout",
+    label: "Logout",
+    disabled: false,
+  },
+];
+
 
 const siderStyle = {
   overflow: "auto",
@@ -31,7 +48,7 @@ function clickManager() {
 }
 
 const componentsMap = {
-  products: Products,
+  products: ProductList,
   facets: Facets,
   collection: Collection,
 };
@@ -40,7 +57,7 @@ const HomeAdmin = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const { data } = useOne("products", 5);
+  // const { data } = useOne("products", 5);
   // console.log(data);
   // const {data: users} = useList('users');
 
@@ -50,7 +67,7 @@ const HomeAdmin = () => {
     setSelectedMenu(item.key);
     const selectedKey = item.key;
     const parentKey = findParentKey(items, selectedKey);
-    // router.navigate(`/${parentKey}/${selectedKey}`);
+    router.navigate(`/${parentKey}/${selectedKey}`);
   };
 
   const findParentKey = (items, childKey) => {
@@ -146,13 +163,7 @@ const HomeAdmin = () => {
             
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+        
       </Layout>
     </Layout>
   );
